@@ -31,7 +31,7 @@ def do_evaluation(
     det_res = eval_DL_detection(predictions, logger, is_validation)
 
     # multi-label lesion tagging
-    if cfg.MODEL.TAG_ON:
+    if not cfg.MODEL.TAG_ON:
         tag_res = eval_DL_tagging(predictions, logger, is_validation)
 
     # weakly-supervised segmentation
