@@ -28,6 +28,7 @@ class DeepLesionDataset(object):
         self.classes = ['__background__',  # always index 0
                         'lesion']
         self.num_classes = len(self.classes)
+        ann_file = "/gdrive/MyDrive/TCS/DL_info.csv"
         self.loadinfo(ann_file)
         self.image_fn_list, self.lesion_idx_grouped = self.load_split_index()
         self.num_images = len(self.image_fn_list)
@@ -44,6 +45,7 @@ class DeepLesionDataset(object):
 
     def _process_manual_annot_test_tags(self):
         fn = os.path.join(cfg.PROGDAT_DIR, cfg.DATASETS.TAG.MANUAL_ANNOT_TEST_FILE)
+        fn ='/content/CADLab/LesaNet/program_data/hand_labeled_test_set.json'
         with open(fn, 'r') as f:
             data = json.load(f)
         self.manual_annot_test_tags = {}
@@ -89,7 +91,7 @@ class DeepLesionDataset(object):
 
         self.tag_classes = [d['class'] for d in self.tag_dict_list]
         cfg.runtime_info.tag_list = self.tag_list
-        if 'parent_list' not in cfg.runtime_info:
+        if 'parent_list' in cfg.runtime_info:
             tag_dict_file = os.path.join(cfg.PROGDAT_DIR, cfg.DATASETS.TAG.TAG_DICT_FILE)
             self.tag_dicts = load_tag_dict_from_xlsfile(tag_dict_file)
             parent_list = gen_parent_list(self.tag_dicts, self.tag_list)
@@ -100,7 +102,7 @@ class DeepLesionDataset(object):
                                                      all_children_list)
             self.logger.info('%d parent-children relation pairs; %d exclusive relation pairs',
                              sum([len(p) for p in parent_list]), sum([len(p) for p in cfg.runtime_info.exclusive_list])/2)
-        self.exclusive_list = cfg.runtime_info.exclusive_list
+        #self.exclusive_list = cfg.runtime_info.exclusive_list
 
         if self.split == 'train':
             cfg.runtime_info.train_cls_sz = self.cls_sz
