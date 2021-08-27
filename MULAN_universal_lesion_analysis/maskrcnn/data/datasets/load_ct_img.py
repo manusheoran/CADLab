@@ -58,7 +58,7 @@ def load_multislice_img_16bit_png(data_dir, imname, slice_intv, do_clip, num_sli
     def _load_data_from_png(imname, delta=0):
         imname1 = get_slice_name(data_dir, imname, delta)
         if imname1 not in data_cache.keys():
-            data_cache[imname1] = cv2.imread(os.path.join(data_dir, imname1), -1)
+            data_cache[imname1] = cv2.imread(os.path.join(data_dir, imname1), 0)
             assert data_cache[imname1] is not None, 'file reading error: ' + imname1
             # if data_cache[imname1] is None:
             #     print('file reading error:', imname1)
