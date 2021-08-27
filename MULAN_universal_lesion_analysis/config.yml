@@ -3,7 +3,7 @@ FINETUNE_FROM: ""  # useful in training. If "", same with EXP_NAME
 GPU: ''  # if "", choose the idlest GPU
 BEGIN_EPOCH: 8  # if = 0, start new training process; if > 0, load previous checkpoint according to FINETUNE_FROM
 LOG_IN_FILE: True
-MODE: "demo"  # "train", "eval", "vis", "demo", "batch", see readme.md
+MODE: "eval"  # "train", "eval", "vis", "demo", "batch", see readme.md
 # If you want to train, set MODE to "train", BEGIN_EPOCH to 0, and EXP_NAME to a new name.
 EVAL_AT_BEGIN: False  # do validation before start training
 KEEP_BEST_MODEL: True
@@ -21,7 +21,7 @@ SOLVER:
 
 DATASETS:  # config your dataset paths in paths_catalog.py
   TRAIN: ["DeepLesion_train"]
-  VAL: ["DeepLesion_val"]
+  VAL: ["DeepLesion_test"]
   TEST: ["DeepLesion_test"]
   TAG:
     SPLIT_FILE: 'text_mined_labels_171_and_split.json'
