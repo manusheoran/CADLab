@@ -135,6 +135,7 @@ class DetectronCheckpointer(Checkpointer):
             self.logger.info("{} points to {}".format(f, catalog_f))
             f = catalog_f
         # download url files
+        f = "/gdrive/MyDrive/Copy of MULAN trained on DeepLesion_epoch_08.pth"
         if f.startswith("http"):
             # if the file is a url path, download it and cache it
             cached_f = cache_url(f)
