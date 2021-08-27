@@ -175,7 +175,7 @@ class DeepLesionDataset(object):
         num_boxes = boxes.shape[0]
         classes = torch.ones(num_boxes, dtype=torch.int)  # lesion/nonlesion
         target.add_field("labels", classes)
-        if cfg.MODEL.TAG_ON:
+        if not cfg.MODEL.TAG_ON:
             tags = torch.zeros(num_boxes, self.num_tags, dtype=torch.int)
             reliable_neg_tags = torch.zeros(num_boxes, self.num_tags, dtype=torch.int)
             for p in range(num_boxes):
