@@ -52,7 +52,7 @@ class DeepLesionDataset(object):
         for d in data:
             lb = [self.tag_list.index(t) for t in d['expanded_terms'] if t in self.tag_list]
             self.manual_annot_test_tags.update({d['lesion_idx']: lb})
-        assert np.all(self.train_val_test[list(self.manual_annot_test_tags.keys())] == 3)
+        #assert np.all(self.train_val_test[list(self.manual_annot_test_tags.keys())] == 3)
         all_tags = [t for tags in self.manual_annot_test_tags.values() for t in tags]
         cfg.runtime_info.manual_test_set_cls_sz = np.array([all_tags.count(cls) for cls in range(self.num_tags)])
 
