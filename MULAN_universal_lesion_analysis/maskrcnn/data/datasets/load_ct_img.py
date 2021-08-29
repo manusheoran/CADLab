@@ -13,7 +13,7 @@ from maskrcnn.config import cfg
 
 def load_prep_img(data_dir, imname, spacing, slice_intv, do_clip=False, num_slice=3, is_train=False):
     """load volume, windowing, interpolate multiple slices, clip black border, resize according to spacing"""
-    data_dir = '/gdrive/MyDrive/TCS/DeepLesion/testset/image'
+    data_dir = '/gdrive/MyDrive/TCS/DeepLesion/testset/test_dataset'
     im, mask = load_multislice_img_16bit_png(data_dir, imname, slice_intv, do_clip, num_slice)
 
     im = windowing(im, cfg.INPUT.WINDOWING)
